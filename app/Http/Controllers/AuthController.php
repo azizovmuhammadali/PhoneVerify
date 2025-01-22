@@ -33,7 +33,9 @@ class AuthController extends Controller
             'code' => $request->code
         ];
         $result = $this->userServiceInterface->codecheck($data);
-       
+        if ($result['status'] === 'error') {
+            return $this->error($result['message'], 400);
+        }
         return $this->success([
             'user' =>new UserResource($result['user']),
             'token' => $result['token']

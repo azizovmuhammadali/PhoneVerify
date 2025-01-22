@@ -51,24 +51,21 @@ class UserService implements UserServiceInterface
     public function codecheck($code)
     {
         $user = $this->reposity->code($code['phone_number']);
+        
         if (!$user) {
-            return [
-                'status' => 'error',
-                'message' => __('errors.phoned')
-            ];
+            return ['status' => 'error', 'message' => __('errors.phoned')];
         }
     
         if ($code['code'] != $user->phone_code) {
-            return [
-                'status' => 'error',
-                'message' => __('errors.phoned')
-            ];
+            return ['status' => 'error', 'message' => __('errors.phoned')];
         }
+    
         $token = $user->createToken('auth_login')->plainTextToken;
     
         return [
+            'status' => 'success',
             'user' => $user,
-            'token' => $token,
+            'token' => $token
         ];
     }
  public function verifyEmail($token){
