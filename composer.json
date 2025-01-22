@@ -7,8 +7,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "astrotomic/laravel-translatable": "^11.15",
         "laravel/framework": "^11.31",
         "laravel/sanctum": "^4.0",
+        "laravel/telescope": "^5.3",
         "laravel/tinker": "^2.9"
     },
     "require-dev": {
